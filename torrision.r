@@ -43,4 +43,7 @@ for (i in pdbfiles){
   
   #prints the table summary of the output of torsion.pdb function, the 'try' part means it only prints if the function runs without error
   try(print(torsion.pdb(index)$tbl))
+  excel_data = torsion.pdb(index)$tbl
+  y <- as.character(excel_data) 
+  write.csv(excel_data, file = 'tor.csv', row.names = F) 
 }
