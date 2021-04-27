@@ -1,6 +1,5 @@
 setwd("~/")
 
-library(MASS)
 library(hash)
 library(devtools) 
 library(bio3d) 
@@ -64,9 +63,15 @@ resid <- readline(prompt="Enter 3 letter residue ID: ")
 
 pdbfiles <- list.files(pattern="*.pdb", full.names=TRUE)
 
-result_matrix = matrix(data = c("pdb code","chain","residue number", "CA-CB","CB-CG","CG-CD1","CG-CD2","N-CA","CA-CO","CO-N","C-N"), nrow = 1, ncol = 11)
+result_matrix = matrix(data = c("pdb code","chain","residue number", "CO-N","N-CA","CA-CO","CA-CB","CB-CG","CG-CD1","CG-CD2","CO-N"), nrow = 1, ncol = 11)
+row2 = c(" "," "," ","pre-omega","phi","psi","chi1","chi2","chi3a","chi3b","omega")
+
+result_matrix = rbind(result_matrix, row2)
+
 atoms = c ("CA","CB","CB","CG","CD1","CD2","N","O","N+","C","C-")
-bonds = c ("CA","CB","CB","CG","CG","CD1","CG","CD2","N","CA","CA","C","C","N+","C-","N")
+bonds = c ("C-","N","N","CA","CA","C","CA","CB","CB","CG","CG","CD1","CG","CD2","C","N+")
+
+
 
 for(current_file in pdbfiles){
   
