@@ -1,6 +1,5 @@
 setwd("~/")
 
-library(MASS)
 library(hash)
 library(devtools) 
 library(bio3d) 
