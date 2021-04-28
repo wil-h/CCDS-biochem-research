@@ -1,3 +1,8 @@
+#Code probably works as intended.
+#if not, consider adopting less
+#ambitious intentions prior
+#to modification.
+
 setwd("~/")
 
 library(hash)
@@ -9,19 +14,25 @@ get_atom <- function (current_resno, starting_index, atom.data, elety)
   i = starting_index
   if (substring(elety,nchar(elety)) == "-") {
     i = i - 1
+    if (i == 0) {return ("N/A")}
     while(as.numeric(current_resno) - 1 == as.numeric(atom.data[i,3])) {
       if (atom.data[i,4] == substring (elety,1,nchar (elety)-1)) {return (atom.data[i,5:7])}
       i = i-1
+      if (i == 0) {return ("N/A")}
     }
     return ("N/A")
   }
   else if (substring(elety,nchar(elety)) == "+")
   {
-    while(current_resno == atom.data[i,3]) {i = i + 1}
+    while(current_resno == atom.data[i,3]) {
+      i = i + 1
+      if (i == length(atom.data)/7 + 1) {return ("N/A")}
+      }
     while (as.numeric(current_resno) + 1 == as.numeric(atom.data[i,3]))
     {
       if (atom.data[i,4] == substring (elety,1,nchar (elety)-1)) {return (atom.data[i,5:7])}
       i = i+1
+      if (i == length(atom.data)/7 + 1) {return ("N/A")}
     }
   }
   else {
@@ -29,6 +40,7 @@ get_atom <- function (current_resno, starting_index, atom.data, elety)
     {
       if (atom.data[i,4] == elety && atom.data[i,3] == current_resno) {return (atom.data[i,5:7])}
       i = i + 1
+      if (i == length(atom.data)/7 + 1) {return ("N/A")}
     }
   }
   return ("N/A")
@@ -49,10 +61,17 @@ calc_bondlength <- function (array1, array2)
 }
 
 dir = getwd() 
-path = readline("enter relative path: ") #TODO support absolute and relative paths
+path = readline("path of output directory: ") #TODO support absolute and relative paths
+filename = readline("enter file containing pdb accession codes (leave blank if files are already downloaded): ")
 
+if (filename != "") {
+  pdb_ids = scan(filename,what='character',sep=",")
+  get.pdb(pdb_ids,path=paste(dir, "/", path, sep=''))
+}
+  
 print(paste(dir, "/", path, sep=''))
 setwd(paste(dir, "/", path, sep=''))
+
 
 colpaste <- function(x, col.names = colnames(x)) {
   apply(x, 1, function(row) paste(row[col.names], collapse = ","))
