@@ -10,6 +10,7 @@
 > 
 
 ## dependancies
+see sessionInfo.txt for more information on runtime enviroment.
 
 __tested under__:
   - [R version 4.0.3 (2020-10-10)](https://www.r-project.org/)
