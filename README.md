@@ -10,9 +10,12 @@
 > 
 
 ## dependancies
-see sessionInfo.txt for more information on runtime enviroment.
+should work on all OSX and linux, though the code has only been tested on Windows 10. see sessionInfo.txt for more information on R runtime enviroment. All python libraries are installed by default, no further installation is required.
 
 __tested under__:
   - [R version 4.0.3 (2020-10-10)](https://www.r-project.org/)
-  - [bio3d_2.4-1](https://bitbucket.org/Grantlab/bio3d/src/master/)
-  - [hash_2.2.6.1](https://cran.r-project.org/web/packages/hash/index.html)
+    - [bio3d_2.4-1](https://bitbucket.org/Grantlab/bio3d/src/master/)
+    - [hash_2.2.6.1](https://cran.r-project.org/web/packages/hash/index.html)
+    - [rjson_0.2.20](https://cran.r-project.org/web/packages/rjson/index.html)
+    - [MASS_7.3-53.1](https://cran.r-project.org/web/packages/MASS/index.html)
+  - [python3](https://www.python.org/)
