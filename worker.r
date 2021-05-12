@@ -8,7 +8,6 @@ library(MASS)
 library(hash)
 library(devtools)
 library(bio3d)
-library(MASS)
 library(rjson)
 
 args = commandArgs(trailingOnly=TRUE)
@@ -183,12 +182,6 @@ for(file_index in 1:length(pdbfiles)){
     }
   }
 }
-
-#if(args[1] != 1) {
-#  angle_matrix = angle_matrix[-c(1),]
-#  length_matrix = length_matrix[-c(1),]
-#  torsion_matrix = torsion_matrix[-c(1),]
-#}
 
 
 write.matrix(angle_matrix, file = paste("angle_",args[1],".csv",sep=""),sep=",") 
