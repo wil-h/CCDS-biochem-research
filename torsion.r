@@ -1,8 +1,9 @@
-setwd("~/")
+#setwd("~/")
 
 library(hash)
 library(devtools) 
 library(bio3d) 
+library(MASS)
 
 get_atom <- function (current_resno, starting_index, atom.data, elety)
 {
@@ -100,17 +101,21 @@ for(current_file in pdbfiles){
       coords[[atom]] = get_atom (current_resno, i, atom.data, atom)
     }
     
-    angle_vector = c(current_file, atom.data[i,2],current_resno)
+    torsion_vector = c(current_file, atom.data[i,2],current_resno)
     for (bond_index in 1:(length(bonds)/4))
     {
-      array1 = get(bonds[bond_index * 4 - 3],coords)
-      array2= get(bonds[bond_index * 4 - 2], coords)
-      array3= get(bonds[bond_index * 4 - 1], coords)
-      array4= get(bonds[bond_index * 4], coords)
-      angle = torsion.xyz(c(as.numeric(array1),as.numeric(array2),as.numeric(array3),as.numeric(array4)))
-      angle_vector = c(angle_vector,angle)
+      tryCatch(
+        expr = {
+          array1 = get(torsion_bonds[bond_index * 4 - 3],coords)
+          array2= get(torsion_bonds[bond_index * 4 - 2], coords)
+          array3= get(torsion_bonds[bond_index * 4 - 1], coords)
+          array4= get(torsion_bonds[bond_index * 4], coords)
+          torsional_angle = torsion.xyz(c(as.numeric(array1),as.numeric(array2),as.numeric(array3),as.numeric(array4)))
+        },
+        error=function (e){torsional_angle="NA"})
+      torsion_vector = c(torsion_vector,torsional_angle)
     }
-    result_matrix = rbind(result_matrix, angle_vector)
+    result_matrix = rbind(result_matrix, torsion_vector)
     repeat { #since r does not have a "do while" loop, we need to use this instead
       i = i + 1
       if(i == length(atom.data)/7 || (current_resno != atom.data[i,3] && resid == atom.data[i,1])) {
@@ -120,4 +125,4 @@ for(current_file in pdbfiles){
   }
 }
 
-write.matrix(result_matrix, file = "torsion.csv",sep=",") 
+write.matrix(result_matrix, file = paste("torsion_",resid,".csv",sep=""),sep=",") 
