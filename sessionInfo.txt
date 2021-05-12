@@ -20,15 +20,18 @@ Running under: Windows 10 x64 (build 19041)
 Matrix products: default
 
 locale:
-[1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United States.1252   
-[3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C                          
+[1] LC_COLLATE=English_United States.1252 
+[2] LC_CTYPE=English_United States.1252   
+[3] LC_MONETARY=English_United States.1252
+[4] LC_NUMERIC=C                          
 [5] LC_TIME=English_United States.1252    
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] bio3d_2.4-1    devtools_2.3.2 usethis_2.0.1  hash_2.2.6.1 
+[1] rjson_0.2.20   bio3d_2.4-1    devtools_2.3.2 usethis_2.0.1  hash_2.2.6.1  
+[6] MASS_7.3-53.1 
 
 loaded via a namespace (and not attached):
  [1] Rcpp_1.0.6        magrittr_2.0.1    pkgload_1.1.0     R6_2.5.0         
@@ -39,3 +42,4 @@ loaded via a namespace (and not attached):
 [21] purrr_0.3.4       callr_3.5.1       fs_1.5.0          ps_1.5.0         
 [25] testthat_3.0.1    memoise_2.0.0     glue_1.4.2        cachem_1.0.3     
 [29] compiler_4.0.3    desc_1.2.0        prettyunits_1.1.1
+
