@@ -1,0 +1,22 @@
+{
+  "rscript_path":"C:/Program Files/R/R-4.0.3/bin/Rscript.exe",
+  "libpaths":["C:/Users/josep/Documents/R/win-library/4.0","C:/Program Files/R/R-4.0.3/library"],
+  "resid":"LEU",
+  "output_dir":"test",
+  "atoms" : ["C", "C-", "CA", "CA+", "CA-", "CB", "CD1", "CD2", "CG", "N", "N+", "O"],
+  "length" : {
+    "bonds":["C-","N","N","CA","CA","C","CA","CB","CB","CG","CG","CD1","CG","CD2","C","N+"],
+    "header":["pdb code","chain","residue number", "CO-N","N-CA","CA-CO","CA-CB","CB-CG","CG-CD1","CG-CD2","CO-N"],
+    "header2":[" "," "," ","pre-omega","phi","psi","chi1","chi2","chi3a","chi3b","omega"]
+  },
+  "torsion" : {
+    "bonds":["CA-","C-", "N", "CA", "C-", "N","CA","C", "N", "CA", "C", "N+", "N", "CA", "CB", "CG", "CA", "CB", "CG", "CD1", "CA", "CB", "CG", "CD2", "CA", "C", "N+","CA+"],
+    "header":["pdb code","chain","residue number", "CA-C-N-CA","C-N-CA-C","N-CA-C-N","N-CA-CB-CG","CA-CB-CG-CD1","CA-CB-CG-CD2","CA-C-N-CA"],
+    "header2":[" "," "," ","pre-omega","phi","psi","chi1","chi2a","chi2b","omega"]
+  },
+  "angle" : {
+    "bonds":["C-","N","CA","N","CA","C","N","CA","CB","CA","CB","CG","CB","CG","CD1","CB","CG","CD2","CB","CA","C","CA","C","N+"],
+    "header":["pdb code","chain","residue number", "CO-N-CA","N-CA-CO","N-CA-CB","CA-CB-CG","CB-CG-CDa","CB-CG-CDb","CB-CA-CO","CA-CO-N"],
+    "header2":[" "," "," ", " "," "," "," "," "," "," "," "]
+}
+}
