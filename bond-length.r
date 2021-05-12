@@ -3,11 +3,12 @@
 #ambitious intentions prior
 #to modification.
 
-setwd("~/")
+#setwd("~/")
 
 library(hash)
 library(devtools) 
 library(bio3d) 
+library(MASS)
 
 get_atom <- function (current_resno, starting_index, atom.data, elety)
 {
@@ -119,15 +120,18 @@ for(current_file in pdbfiles){
       coords[[atom]] = get_atom (current_resno, i, atom.data, atom)
     }
     
-    angle_vector = c(current_file, atom.data[i,2],current_resno)
+    length_vector = c(current_file, atom.data[i,2],current_resno)
     for (bond_index in 1:(length(bonds)/2))
     {
-      array1= get(bonds[bond_index * 2 - 1],coords)
-      array2= get(bonds[bond_index * 2], coords)
-      angle = calc_bondlength(array1,array2)
-      angle_vector = c(angle_vector,angle)
+      tryCatch(
+        expr = {
+          array1= get(length_bonds[bond_index * 2 - 1],coords)
+          array2= get(length_bonds[bond_index * 2], coords)
+          len = calc_bondlength(array1,array2)},
+        error=function (e){len="NA"})
+      length_vector = c(length_vector,len)
     }
-    result_matrix = rbind(result_matrix, angle_vector)
+    result_matrix = rbind(result_matrix, length_vector)
     repeat { #since r does not have a "do while" loop, we need to use this instead
       i = i + 1
       if(i == length(atom.data)/7 || (current_resno != atom.data[i,3] && resid == atom.data[i,1])) {
@@ -137,4 +141,4 @@ for(current_file in pdbfiles){
   }
 }
 
-write.matrix(result_matrix, file = "bond_length.csv",sep=",") 
+write.matrix(result_matrix, file = paste("length_",resid,".csv",sep=""),sep=",") 
