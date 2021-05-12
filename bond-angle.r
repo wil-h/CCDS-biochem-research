@@ -1,9 +1,11 @@
-setwd("~/")
+#setwd("~/")
 
 library(MASS)
 library(hash)
 library(devtools) 
 library(bio3d) 
+library(configr)
+library(parallel)
 
 get_atom <- function (current_resno, starting_index, atom.data, elety)
 {
@@ -44,6 +46,8 @@ get_atom <- function (current_resno, starting_index, atom.data, elety)
 
 
 dir = getwd() 
+
+resid <- readline(prompt="Enter 3 letter residue ID: ")
 path = readline("path of output directory: ") #TODO support absolute and relative paths
 filename = readline("enter file containing pdb accession codes (leave blank if files are already downloaded): ")
 
@@ -60,7 +64,7 @@ colpaste <- function(x, col.names = colnames(x)) {
 }
 
 #prompts the user to type in the console a three letter resid ID, such a PRO for proline
-resid <- readline(prompt="Enter 3 letter residue ID: ")
+
 
 pdbfiles <- list.files(pattern="*.pdb", full.names=TRUE)
 
@@ -83,7 +87,7 @@ for(current_file in pdbfiles){
     i = i + 1
     if(i == length(atom.data)/7) {
       break #needed here in the unlikely event that a file has zero of the target
-            #residue present.
+      #residue present.
     }
   }
   
@@ -106,11 +110,9 @@ for(current_file in pdbfiles){
       i = i + 1
       if(i == length(atom.data)/7 || (current_resno != atom.data[i,3] && resid == atom.data[i,1])) {
         break
-        }
       }
+    }
   }
 }
 
-write.matrix(result_matrix, file = "bond_angle.csv",sep=",") 
-
-                       
+write.matrix(result_matrix, file = paste("angle_",resid,".csv",sep=""),sep=",") 
