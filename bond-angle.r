@@ -4,8 +4,7 @@ library(MASS)
 library(hash)
 library(devtools) 
 library(bio3d) 
-library(configr)
-library(parallel)
+
 
 get_atom <- function (current_resno, starting_index, atom.data, elety)
 {
