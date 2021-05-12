@@ -66,15 +66,15 @@ for index in range(3):
     for csv_file in csvs[index][1:]:
         matrices[index] += list(csv.reader(open(csv_file, "rt",encoding="utf8"), delimiter=","))[2:]
 
-with open("bond_angle","w",newline='') as my_csv:
+with open("bond_angle"+ config_data['resid'] + ".csv","w",newline='') as my_csv:
     newarray = csv.writer(my_csv,delimiter=',')
     newarray.writerows(matrices[0])
 
-with open("bond_length","w",newline='') as my_csv:
+with open("bond_length" + config_data['resid'] + ".csv","w",newline='') as my_csv:
     newarray = csv.writer(my_csv,delimiter=',')
     newarray.writerows(matrices[1])
 
-with open("bond_length","w",newline='') as my_csv:
+with open("bond_length" + config_data['resid'] + ".csv","w",newline='') as my_csv:
     newarray = csv.writer(my_csv,delimiter=',')
     newarray.writerows(matrices[2])
 
