@@ -7,7 +7,6 @@ import csv
 import os
 
 start_time = time.time()
-cores = multiprocessing.cpu_count()
 
 if (len(sys.argv) == 1):
     print("please specify config file")
@@ -15,6 +14,15 @@ if (len(sys.argv) == 1):
 
 config_data = json.loads(open(sys.argv[1]).read())
 output_dir = config_data['output_dir']
+
+if  (config_data['cores'] > 0):
+    cores = int(config_data['cores'])
+
+elif (config_data['cores'] < 0):
+    cores = multiprocessing.cpu_count() - int(config_data['cores'])
+    
+else:
+    cores = multiprocessing.cpu_count()
 
 cw_dir = os.getcwd().replace("\\", "/")
 out_dir = cw_dir + "/" + config_data["output_dir"]
@@ -28,7 +36,7 @@ for filename in files:
         pdbs += [filename]
 
 tasks = [[] for i in range(cores)]
-for file_index in range(len(pdbs)): tasks[file_index % 4] += [pdbs[file_index]]
+for file_index in range(len(pdbs)): tasks[file_index % cores] += [pdbs[file_index]]
 
 os.chdir(cw_dir)
 
@@ -75,7 +83,7 @@ for category in csvs:
         os.remove(filename)
 
 os.chdir(cw_dir)
-for i in cores:
-    os.remove("worker_" + str(array_num + 1) + ".txt")
+for i in range(cores):
+    os.remove("worker_" + str(i + 1) + ".txt")
 
 print("--- %s seconds ---" % (time.time() - start_time))
