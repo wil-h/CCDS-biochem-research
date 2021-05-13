@@ -18,4 +18,4 @@ __tested under__:
     - [hash_2.2.6.1](https://cran.r-project.org/web/packages/hash/index.html)
     - [rjson_0.2.20](https://cran.r-project.org/web/packages/rjson/index.html)
     - [MASS_7.3-53.1](https://cran.r-project.org/web/packages/MASS/index.html)
-  - [python3](https://www.python.org/)
+  - [python 3.7.9](https://www.python.org/)
