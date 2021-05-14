@@ -1,6 +1,7 @@
 {
   "rscript_path":"C:/Program Files/R/R-4.0.3/bin/Rscript.exe",
   "libpaths":["C:/Users/josep/Documents/R/win-library/4.0","C:/Program Files/R/R-4.0.3/library"],
+  "cores":0,
   "resid":"LEU",
   "output_dir":"test",
   "atoms" : ["C", "C-", "CA", "CA+", "CA-", "CB", "CD1", "CD2", "CG", "N", "N+", "O"],
