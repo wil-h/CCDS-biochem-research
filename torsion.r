@@ -1,4 +1,5 @@
 #setwd("~/")
+#.libPaths(c()) place library paths here.
 
 library(hash)
 library(devtools) 
