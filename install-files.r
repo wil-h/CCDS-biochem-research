@@ -1,3 +1,6 @@
+#setwd("~/")
+#.libPaths(c()) place library paths here.
+
 library(bio3d)
 
 dir = getwd()
