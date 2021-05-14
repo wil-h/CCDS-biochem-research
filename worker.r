@@ -1,5 +1,4 @@
 options(warn=-1)
-#setwd("~/")
 args = commandArgs(trailingOnly=TRUE)
 .libPaths(c(args[3],args[4]))
 
