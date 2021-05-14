@@ -58,7 +58,7 @@ calc_bondlength <- function (array1, array2)
 }
 
 dir = getwd() 
-path = readline("path of output directory: ") #TODO support absolute and relative paths
+path = readline("path of output directory: ")
 filename = readline("enter file containing pdb accession codes (leave blank if files are already downloaded): ")
 
 if (filename != "") {
