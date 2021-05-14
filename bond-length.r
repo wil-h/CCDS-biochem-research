@@ -1,9 +1,5 @@
-#Code probably works as intended.
-#if not, consider adopting less
-#ambitious intentions prior
-#to modification.
-
 #setwd("~/")
+#.libPaths(c()) place library paths here.
 
 library(hash)
 library(devtools) 
