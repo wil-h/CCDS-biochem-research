@@ -48,7 +48,7 @@ get_atom <- function (current_resno, starting_index, atom.data, elety)
 dir = getwd() 
 
 resid <- readline(prompt="Enter 3 letter residue ID: ")
-path = readline("path of output directory: ") #TODO support absolute and relative paths
+path = readline("path of output directory: ")
 filename = readline("enter file containing pdb accession codes (leave blank if files are already downloaded): ")
 
 if (filename != "") {
