@@ -74,7 +74,7 @@ with open("bond_length" + config_data['resid'] + ".csv","w",newline='') as my_cs
     newarray = csv.writer(my_csv,delimiter=',')
     newarray.writerows(matrices[1])
 
-with open("bond_length" + config_data['resid'] + ".csv","w",newline='') as my_csv:
+with open("torsion" + config_data['resid'] + ".csv","w",newline='') as my_csv:
     newarray = csv.writer(my_csv,delimiter=',')
     newarray.writerows(matrices[2])
 
