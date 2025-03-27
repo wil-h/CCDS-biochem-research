@@ -1,0 +1,23 @@
+{
+  "rscript_path":"C:/Program Files/R/R-4.4.0/bin/Rscript.exe",
+  "libpaths":["C:/Users/wharrick25/AppData/Local/R/win-library/4.4","C:/Program Files/R/R-4.4.0/library"],
+  "cores":0,
+  "resid":"GLU",
+  "output_dir":"pdbs",
+  "atoms" : ["CA","C","CB","CG","CD","OE1","OE2","N","N+","C-","CA+","CA-"],
+  "length" : {
+    "bonds":["C-","N","N","CA","CA","C","CA","CB","CB","CG","CG","CD","CD","OE1","CD","OE2","C","N+"],
+    "header":["pdb code","chain","residue number", "COL-NL","NL-CA","CA-CO","CA-CB","CB-CG","CG-CD","CD-OE1","CD-OE2","CO-NR"],
+    "header2":[" "," "," ","omega-","phi","psi","chi1","chi2","chi3","","","omega+"]
+  },
+  "torsion" : {
+    "bonds":["CA-","C-", "N", "CA", "C-", "N","CA","C", "N", "CA", "C", "N+", "N", "CA", "CB", "CG", "CA", "CB", "CG", "CD", "CB", "CG", "CD", "OE1", "CA", "C", "N+","CA+"],
+    "header":["pdb code","chain","residue number", "CAL-COL-NL-CA","occupancy","COL-NL-CA-CO","occupancy","NL-CA-CO-NR","occupancy","NL-CA-CB-CG","occupancy","CA-CB-CG-CD","occupancy","CB-CG-CD-OE1","occupancy","CA-CO-NR-CAR","occupancy"],
+    "header2":[" "," "," ","omega-","","phi","","psi","","chi1","","chi2","","chi3","","omega+",""]
+  },
+  "angle" : {
+    "bonds":["C-","N","CA","N","CA","C","N","CA","CB","C","CA","CB","CA","C","N+","CA","CB","CG","CB","CG","CD","CG","CD","OE1","CG","CD","OE2"],
+    "header":["pdb code","chain","residue number", "COL-NL-CA","NL-CA-CO","NL-CA-CB","CO-CA-CB","CA-CO-NR","CA-CB-CG","CB-CG-CD","CG-CD-OE1","CG-CD-OE2"],
+    "header2":[" "," "," ", " "," "," "," "," "," "," "," "]
+}
+}
